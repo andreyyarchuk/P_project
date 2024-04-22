@@ -35,6 +35,8 @@ weatherIcon.className = "fa-solid fa-cloud-rain";
 weatherIcon.className = "fa-solid fa-cloud-mist";
 } else if (data.weather[0].main == "Drizzle") {
 weatherIcon.className = "fa-solid fa-cloud-drizzle";
+} else if (data.weather[0].main == "Clouds") {
+weatherIcon.className = "fa-solid fa-cloud";
 }
 
 weather.style.display = "block"
