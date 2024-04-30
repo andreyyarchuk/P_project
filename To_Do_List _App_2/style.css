@@ -1,0 +1,157 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	background: linear-gradient(
+		90deg,
+		hsla(179, 67%, 66%, 1) 0%,
+		hsla(238, 74%, 61%, 1) 100%
+	);
+}
+
+.app {
+	font-family: 'Inconsolata', monospace;
+	width: min(95vw, 31.25em);
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 1.875em;
+}
+
+.container {
+	padding: 2em 2.5em;
+	background-color: #f1f8fb;
+	box-shadow: -25px 34px 111px -26px rgba(0, 0, 0, 0.68);
+	border-radius: 0.8em;
+}
+
+#wrapper {
+	position: relative;
+	display: grid;
+	grid-template-columns: 8fr 4fr;
+	gap: 1em;
+}
+
+#wrapper input {
+	width: 100%;
+	background-color: transparent;
+	color: #111111;
+	font-size: 0.9em;
+	border: none;
+	border-bottom: 2px solid #d1d3d4;
+	padding: 1em 0.5em;
+}
+
+#wrapper input:focus {
+	outline: none;
+	border-color: rgb(114, 166, 235);
+}
+
+#wrapper button {
+	position: relative;
+	border-radius: 0.5em;
+	font-weight: 500;
+	font-size: 1em;
+	background-color: rgb(114, 166, 235);
+	border: none;
+	outline: none;
+	color: #f1f8fb;
+	cursor: pointer;
+}
+
+#tasks {
+	margin-top: 1em;
+	border-radius: 0.5em;
+	width: 100%;
+	position: relative;
+	padding: 1em 0.5em;
+}
+
+.task {
+	background-color: #fff;
+	padding: 0.8em 1em;
+	display: grid;
+	grid-template-columns: 1fr 8fr 2fr 2fr;
+	border-radius: 0.5em;
+	box-shadow: -25px 34px 111px -26px rgba(0, 0, 0, 0.68);
+	align-items: center;
+	cursor: pointer;
+}
+
+.task:not(:first-child) {
+	margin-top: 1em;
+}
+
+.task input[type='checkbox'] {
+	position: relative;
+	appearance: none;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	border: 2px solid #e1e1e1;
+}
+
+.task input[type='checkbox']:before {
+	content: '';
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+
+.task input[type='checkbox']:checked {
+	background-color: rgb(114, 166, 235);
+	border-color: rgb(114, 166, 235);
+}
+
+.task input[type='checkbox']:checked:before {
+	position: absolute;
+	content: '\f00c';
+	color: #fff;
+	font-size: 0.8em;
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+}
+
+.task span {
+	font: 0.9em;
+	font-weight: 400;
+	word-break: break-all;
+}
+
+.task button {
+	color: #fff;
+	width: 100%;
+	padding: 1em 0;
+	border-radius: 0.5em;
+	border: none;
+	cursor: pointer;
+	outline: none;
+}
+
+.edit {
+	background-color: rgb(114, 166, 235);
+}
+
+.delete {
+	background-color: #ff5c5c;
+}
+
+#pending-tasks span {
+	color: rgb(114, 166, 235);
+}
+
+#error {
+	text-align: center;
+	background-color: #fff;
+	color: #ff5c5c;
+	margin-top: 1.5em;
+	padding: 1em 0;
+	border-radius: 0.8em;
+	display: none;
+}
