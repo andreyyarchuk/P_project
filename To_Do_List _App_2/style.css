@@ -151,6 +151,11 @@ body {
 	text-decoration: line-through;
 	color: #a0a0a0;
 }
+
+.data-time {
+	color: #ff5c5c;
+}
+
 #error {
 	text-align: center;
 	background-color: #fff;

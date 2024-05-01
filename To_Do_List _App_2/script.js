@@ -20,6 +20,8 @@ const addTask = () => {
 		return
 	}
 
+	const date_time = new Date()
+
 	const task = `<div class='task'>
 	<input type='checkbox' class='task-check'>
 	<span class='taskname'>${taskName}</span>
@@ -32,6 +34,8 @@ const addTask = () => {
 	<i class="fa-solid fa-trash"></i>
 	</button>
 
+	<div class="data-time">${date_time} </div>
+	// <time datetime="2016-11-18T09:54">09:54 утра</time>
 	</div>`
 
 	tasksContainer.insertAdjacentHTML('beforeend', task)
@@ -66,18 +70,25 @@ const addTask = () => {
 			if (checkBox.checked) {
 				taskCount -= 1
 			} else {
-				taskCount+= 1
+				taskCount += 1
 			}
 			displayCount(taskCount)
 		}
 	})
-	taskCount+=1
+	taskCount += 1
 	displayCount(taskCount)
 	newTaskInput.value = ''
 }
 
 addBtn.addEventListener('click', addTask)
 
+const input_enter = parameter => {
+	if (parameter.keyCode === 13) {
+		addTask()
+	}
+
+}
+newTaskInput.addEventListener('keydown', input_enter)
 
 window.onload = () => {
 	taskCount = 0
