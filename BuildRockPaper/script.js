@@ -11,6 +11,7 @@ optionImages.forEach((image, index) => {
 		image.classList.add('active')
 
 		userResult.src = './images/Rock.png'
+		cpuResult.src = './images/Rock.png'
 		result.textContent = 'Wait...'
 
 		optionImages.forEach((image2, index2) => {
