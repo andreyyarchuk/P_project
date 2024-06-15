@@ -26,7 +26,20 @@ body {
 }
 
 .wrapper .input-box {
-	font-size: 14px;
+	font-size: 20px;
+	font-weight: 400;
+	color: #fff;
+	margin-bottom: 2px;
+}
+
+.wrapper .icon {
+	font-size: 25px;
+	color: #fff;
+	margin-top: 20px;
+}
+
+.wrapper .input-box h6 {
+	font-style: 14px;
 	font-weight: 400;
 	color: #fff;
 	margin-bottom: 2px;
@@ -41,4 +54,9 @@ body {
 	text-align: center;
 	font-size: 20px;
 	color: #737373;
+}
+
+.input-box input::-webkit-inner-spin-button,
+.input-box input::-webkit-outer-spin-button {
+	display: none;
 }
