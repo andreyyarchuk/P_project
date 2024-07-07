@@ -20,12 +20,63 @@ let countClickBtnShowCards = 1;
 let productsData = [];
 
 
+getProducts()
+
+btnShowCards.addEventListener('click', sliceArrCards)
 
 
+async function getProducts() {
+    try {
+        if (!productsData.length) {
+            const res = await fetch('data/products.json')
+            if (!res.ok) {
+                throw new Error(res.statusText)
+            }
+            productsData = await res.json()
+        }
+
+        if ((productsData.length > COUNT_SHOW_CARDS_CLICK) &&
+            btnShowCards.classList.contains('none')) {
+                btnShowCards.classList.remove('none')
+            }
+        renderStartPage(productsData)
+
+    } catch (err) {
+        showErrorMessage(ERROR_SERVER)
+        console.log(err)
+    }
+}
 
 
+function renderStartPage(data) {
+    if (!data || !data.length) {
+        showErrorMessage(NO_PRODUCTS_IN_THIS_CATEGORY)
+        return
+    }
 
+    const arrCards = data.slice(0, COUNT_SHOW_CARDS_CLICK)
+    createCards(arrCards)
+}
 
+function sliceArrCards() {
+    if (shownCards >= productsData.length) return
+
+    console.log(shownCards + ': showCards')
+    countClickBtnShowCards++
+    const countShowCards = COUNT_SHOW_CARDS_CLICK * countClickBtnShowCards
+    const arrCards = productsData.slice(shownCards, countShowCards)
+    createCards(arrCards)
+    console.log(
+        shownCards + ': showCards ',
+        countShowCards +
+        ': countShowCards'
+    )
+    
+    shownCards = cards.children.length
+    if (shownCards >= productsData.length) {
+        btnShowCards.classList.add('none')
+    }
+}
 
 
 // Рендер карточки
