@@ -10,9 +10,56 @@ const wrapper = document.querySelector('.wrapper');
 let productsData = [];
 
 
+getProducts()
+
+
+async function getProducts() {
+	try {
+		if (!productsData.length) {
+			const res = await fetch('data/products.json')
+			if (!res.ok) {
+				throw new Error(res.statusText)
+			}
+			productsData = await res.json()
+		}
+
+		loadProductDetails(productsData)
+
+		renderStartPage(productsData)
+	} catch (err) {
+		showErrorMessage(ERROR_SERVER)
+		console.log(err)
+	}
+}
 
 
 
+
+
+function loadProductDetails(data) {
+    if (!data || data.length) {
+        showErrorMessage(ERROR_SERVER)
+        return
+    }
+
+    checkingRelevanceValueBasket(data)
+
+    const productId = Number(getParameterFromURL('id'))
+    
+    if (!productId) {
+        showErrorMessage(PRODUCT_INFORMATION_NOT_FOUND)
+        return
+    }
+
+    const findProduct = data.find(card => card.id === productId)
+
+    if (!findProduct) {
+        showErrorMessage(PRODUCT_INFORMATION_NOT_FOUND)
+        return
+    }
+
+    renderInfoProduct(findProduct)
+}
 
 
 // Рендер информации о товаре
